@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import cartReducer from "./features/cartSlice"
+import cartReducer, { getTotals } from "./features/cartSlice"
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 
@@ -15,7 +15,7 @@ const store =configureStore({
   cart:cartReducer,
   },
 });
-
+store.dispatch(getTotals());
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

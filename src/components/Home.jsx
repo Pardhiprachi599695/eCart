@@ -1,12 +1,18 @@
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import product from '../data/products.json'
 import { addToCart } from '../features/cartSlice';
+
 
 const productList =product.products
 const Home = () => {
     const dispatch =useDispatch();
+    const history =useHistory();
+    
     const handleAddToCart =(p)=>{
-        dispatch(addToCart(p))
+        dispatch(addToCart(p));
+        history.push('/cart');
+        window.location.reload(false);
 
     }
     
@@ -20,7 +26,7 @@ const Home = () => {
 
             <div className='details'>
                 <h4>Price :</h4>
-                <span className='price'>{p.price}</span>
+                <span className='price'>₹{p.price}</span>
                 
             </div>
           
